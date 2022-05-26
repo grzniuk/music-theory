@@ -1,0 +1,70 @@
+{
+    "c": {
+        "_name": "C",
+        "_position": 0
+    },
+    "c_sharp": {
+        "_name": "C#",
+        "_position": 1
+    },
+    "d_flat": {
+        "_name": "Db",
+        "_position": 1
+    },
+    "d": {
+        "_name": "D",
+        "_position": 2
+    },
+    "d_sharp": {
+        "_name": "D#",
+        "_position": 3
+    },
+    "e_flat": {
+        "_name": "Eb",
+        "_position": 3
+    },
+    "e": {
+        "_name": "E",
+        "_position": 4
+    },
+    "f": {
+        "_name": "F",
+        "_position": 5
+    },
+    "f_sharp": {
+        "_name": "F#",
+        "_position": 6
+    },
+    "g_flat": {
+        "_name": "Gb",
+        "_position": 6
+    },
+    "g": {
+        "_name": "G",
+        "_position": 7
+    },
+    "g_sharp": {
+        "_name": "G#",
+        "_position": 8
+    },
+    "a_flat": {
+        "_name": "Ab",
+        "_position": 8
+    },
+    "a": {
+        "_name": "A",
+        "_position": 9
+    },
+    "a_sharp": {
+        "_name": "A#",
+        "_position": 10
+    },
+    "b_flat": {
+        "_name": "Bb",
+        "_position": 10
+    },
+    "b": {
+        "_name": "B",
+        "_position": 11
+    }
+}
