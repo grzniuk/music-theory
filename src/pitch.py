@@ -1,3 +1,5 @@
+import json
+
 class Pitch():
 
     white_positions = (0, 2, 4, 5, 7, 9, 11)
@@ -24,10 +26,10 @@ class Pitch():
         return self._position not in white_positions
 
     def __str__(self):
-        return json.dumps(dict(self), ensure_ascii=False)
+        return self.name()
 
     def __repr__(self):
-        return self.__str__()
+        return json.dumps(dict(self), ensure_ascii=False)
 
 c = Pitch('C', 0)
 c_sharp = Pitch('C#', 1)

@@ -7,17 +7,24 @@ class Chord():
         self._name = name
         self._notes = notes
 
+    def name(self):
+        return self._name
+
     def notes(self):
         return self._notes
 
-major = {}
-for maj in scale.major:
-    if maj:
-        # get alternate values from the scale between 0 and 5
-        major[maj.name()] = Chord(maj.name(), maj.notes()[0:5:2])
+    def __str__(self):
+        note_names = [x.name() for x in self.notes()]
+        return f"{self.name()}: {'-'.join(note_names)}"
 
-minor = {}
-for min in scale.minor:
-    if min:
-        # get alternate values from the scale between 0 and 5
-        minor[min.name()] = Chord(min.name(), min.notes()[0:5:2])
+    def __repr__(self):
+        return json.dumps(dict(self))
+
+def triad(scale):
+    if scale:
+        return Chord(scale.name(), scale.notes()[0:5:2])
+    else:
+        return None
+
+major = { pitch: triad(scale.major[pitch]) for pitch in scale.major.keys() }
+minor = { pitch: triad(scale.minor[pitch]) for pitch in scale.minor.keys() }
