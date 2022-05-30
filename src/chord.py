@@ -1,5 +1,4 @@
 import jsonpickle
-#import src.pitch as pitch
 import src.pitch as pitch
 import src.note as note
 import src.scale as scale
@@ -36,7 +35,7 @@ class Chord():
         elif self.is_minor():
             return 'min'
         else:
-            raise ValueError
+            raise ValueError(f'{self.name()} is not a valid chord type - please check values.')
 
     def is_minor(self):
         return not self.is_major() and not self.is_diminished()
@@ -61,7 +60,7 @@ class Chord():
             elif (degree == 7):
                 return 'dim'
             else:
-                raise ValueError
+                raise IndexError(f'{degree} is out of bounds. degree should be a value in range 1..7')
         elif maj_min == 'min':
             if (degree in (3, 6, 7)):
                 return 'maj'
@@ -70,9 +69,9 @@ class Chord():
             elif (degree == 2):
                 return 'dim'
             else:
-                raise ValueError
+                raise IndexError(f'{degree} is out of bounds. degree should be a value in range 1..7')
         else:
-            raise IndexError
+            raise IndexError(f'{maj_min} is an invalis scale type - must be either maj or min.')
 
     @classmethod
     def boolean_tuple_type(cls, type_str):
@@ -83,7 +82,7 @@ class Chord():
         elif type_str == 'min':
             return (False, False)
         else:
-            raise ValueError
+            raise ValueError(f'{type_str} is an invalid chord type. Valid types are maj, min or dim')
 
     @classmethod
     def triad(cls, scale, degree=1):
@@ -97,7 +96,6 @@ class Chord():
             degree -= 1
             slicer = slice(degree, degree+5, 2)
             notes = list(scale.notes() + scale.notes())[slicer]
-            print(f'{scale.note_names()}[{slicer}]')
             # name is the first note's pitch
             name = notes[0].name() + type_str
             # some piano chords use a different key as a proxy
@@ -127,13 +125,10 @@ for p in pitch.key_pitches:
         key = ''.join((pname, maj_min))
         s = scale.scales[key]
         if s:
-            print(f'{key}:')
             for j, note in enumerate(s.notes()):
                 c = Chord.triad(s, j+1)
                 name = c.name()
-                print(f'created: {c}')
                 if name in chords.keys():
                     if (chords[name].notes() != c.notes()) and not c.uses_proxy():
-                        print(f"overwriting {chords[name]} with {c}")
-                        raise ValueError
+                        raise ValueError(f'Conflicting values for {name} chord: {chords[name]} and {c}')
                 chords[name] = c
