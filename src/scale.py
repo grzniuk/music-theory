@@ -1,13 +1,33 @@
+import jsonpickle
 import src.pitch as pitch
 from collections import namedtuple
+import typing
+
+class ScaleNotes(typing.NamedTuple):
+    tonic: pitch.Pitch
+    supertonic: pitch.Pitch
+    mediant: pitch.Pitch
+    subdominant: pitch.Pitch
+    dominant: pitch.Pitch
+    submediant: pitch.Pitch
+    leading: pitch.Pitch
+
+    def __str__(self):
+        pitch_strs = [p.name() for p in list(self)]
+        return f"{', '.join(pitch_strs)}"
+
+    def __repr__(self):
+        return jsonpickle.encode(self)
+
+    def degree(self, degree):
+        return self[degree-1]
+
+    def slice(self, slicer):
+        notes = list(self)
+        return tuple(notes[slicer])
+        #return tuple([self.degree(i%7) for i in (start, start+2, start+4)])
 
 class Scale:
-
-    # the scale should be eight notes starting and finishing on the same note in adjacent octaves
-    _notes = namedtuple(
-        'Notes',
-        'tonic supertonic mediant subdominant dominant submediant leading'
-    )
 
     # 1..8 -> notes[0..7] so to dereference decrement degree_number
     def degree_number(self, degree_number):
@@ -22,8 +42,8 @@ class Scale:
     def is_minor(self):
         return not self._major
 
-    def major_minor(self):
-        if self.is_major:
+    def maj_min(self):
+        if self.is_major():
             return 'maj'
         else:
             return 'min'
@@ -59,203 +79,208 @@ class Scale:
         return tuple([note.name() for note in self.notes()])
 
     def __str__(self):
-        note_str = ", ".join(self.note_names())
-        return f"{self.name()} ({self.pitch().name()}, self.major_minor()): {note_str}"
+        return f"{self.name()} ({self.pitch().name()}, {self.maj_min()}): {self.notes()}"
 
     def __repr__(self):
-        return json.dumps(dict(self))
-
-PitchScales = namedtuple('PitchScales', 'maj min')
+        return jsonpickle.encode(self)
 
 scales = {
-    'C': PitchScales(
-        Scale(
-            "Cmaj",
-            (pitch.c, pitch.d, pitch.e, pitch.f, pitch.g, pitch.a, pitch.b),
-            pitch.c, True
-        ),
-        Scale(
-            "Cmin",
-            (pitch.c, pitch.d, pitch.e_flat, pitch.f, pitch.g, pitch.a_flat, pitch.b_flat),
-            pitch.c, False
-        )
+
+    'Cmaj': Scale(
+        "Cmaj",
+        ScaleNotes(pitch.c, pitch.d, pitch.e, pitch.f, pitch.g, pitch.a, pitch.b),
+        pitch.c, True
     ),
 
-    'C#': PitchScales(
-        # maj scale includes E# which is absent from piano so we'll skip it
-        None,
-        Scale(
-            "C#min",
-            (pitch.c_sharp, pitch.d_sharp, pitch.e, pitch.f_sharp, pitch.a, pitch.b),
-            pitch.c_sharp, True
-        )
+    'Cmin': Scale(
+        "Cmin",
+        ScaleNotes(pitch.c, pitch.d, pitch.e_flat, pitch.f, pitch.g, pitch.a_flat, pitch.b_flat),
+        pitch.c, False
     ),
 
-    'Db': PitchScales(
-        Scale(
-            "Dbmaj",
-            (pitch.d_flat, pitch.e_flat, pitch.f, pitch.g_flat, pitch.a_flat, pitch.b_flat, pitch.c),
-            pitch.d_flat, True
-        ),
+    'C#maj': Scale(
+        # C#maj scale uses E in place of E# and B in place of B# (on piano)
+        'C#maj',
+        ScaleNotes(pitch.c_sharp, pitch.d_sharp, pitch.e_sharp, pitch.f_sharp, pitch.g_sharp, pitch.a_sharp, pitch.b_sharp),
+        pitch.c_sharp, True
+    ),
+
+    'C#min': Scale(
+        "C#min",
+        ScaleNotes(pitch.c_sharp, pitch.d_sharp, pitch.e, pitch.f_sharp, pitch.g_sharp, pitch.a, pitch.b),
+        pitch.c_sharp, False
+    ),
+
+    'Dbmaj': Scale(
+        "Dbmaj",
+        ScaleNotes(pitch.d_flat, pitch.e_flat, pitch.f, pitch.g_flat, pitch.a_flat, pitch.b_flat, pitch.c),
+        pitch.d_flat, True
+    ),
+
+    'Dbmin':
         # min scale includes Fb which is absent from piano so we'll skip it
-        None
+        None,
+
+    'Dmaj': Scale(
+        "Dmaj",
+        ScaleNotes(pitch.d, pitch.e, pitch.f_sharp, pitch.g, pitch.a, pitch.b, pitch.c_sharp),
+        pitch.d, True
     ),
 
-    'D': PitchScales(
-        Scale(
-            "Dmaj",
-            (pitch.d, pitch.e, pitch.f_sharp, pitch.g, pitch.a, pitch.b, pitch.c_sharp),
-            pitch.d, True
-        ),
-        Scale(
-            "Dmin",
-            (pitch.d, pitch.e, pitch.f, pitch.g, pitch.a, pitch.b_flat, pitch.c),
-            pitch.d, False
-        )
+    'Dmin': Scale(
+        "Dmin",
+        ScaleNotes(pitch.d, pitch.e, pitch.f, pitch.g, pitch.a, pitch.b_flat, pitch.c),
+        pitch.d, False
     ),
 
-    'D#': PitchScales(
+    'D#maj':
         # D#maj is a theoretical key so i'll skip it
         None,
-        # maj scale includes E# which is absent from piano so we'll skip it
-        None
+
+    'D#min': Scale(
+        # D#min scale uses E in place of E# (on piano)
+        'D#min',
+        ScaleNotes(pitch.d_sharp, pitch.e_sharp, pitch.f_sharp, pitch.g_sharp, pitch.a_sharp, pitch.b, pitch.c_sharp),
+        pitch.d_sharp, False
     ),
 
-    'Eb': PitchScales(
-        Scale(
-            "Ebmaj",
-            (pitch.e_flat, pitch.f, pitch.g, pitch.a_flat, pitch.b_flat, pitch.c, pitch.d),
-            pitch.e_flat, True
-        ),
-        # min scale includes Cb which is absent from piano so we'll skip it
-        None
+    'Ebmaj': Scale(
+        'Ebmaj',
+        ScaleNotes(pitch.e_flat, pitch.f, pitch.g, pitch.a_flat, pitch.b_flat, pitch.c, pitch.d),
+        pitch.e_flat, True
     ),
 
-    'E': PitchScales(
-        Scale(
-            "Emaj",
-            (pitch.e, pitch.f_sharp, pitch.g_sharp, pitch.a, pitch.b, pitch.c_sharp, pitch.d_sharp),
-            pitch.e, True
-        ),
-        Scale(
-            "Emin",
-            (pitch.e, pitch.f_sharp, pitch.g, pitch.a, pitch.b, pitch.c, pitch.d),
-            pitch.e, False
-        )
+    'Ebmin': Scale(
+        # Ebmin scale uses B in place of Cb (on piano)
+        'Ebmin',
+        ScaleNotes(pitch.e_flat, pitch.f, pitch.g_flat, pitch.a_flat, pitch.b_flat, pitch.c_flat, pitch.d_flat),
+        pitch.e_flat, False
     ),
 
-    'F': PitchScales(
-        Scale(
-            "Fmaj",
-            (pitch.f, pitch.g, pitch.a, pitch.b_flat, pitch.c, pitch.d, pitch.e),
-            pitch.f, True
-        ),
-        Scale(
-            "Fmin",
-            (pitch.f, pitch.g, pitch.a_flat, pitch.b_flat, pitch.c, pitch.d_flat, pitch.e_flat),
-            pitch.f, False
-        )
+    'Emaj': Scale(
+        "Emaj",
+        ScaleNotes(pitch.e, pitch.f_sharp, pitch.g_sharp, pitch.a, pitch.b, pitch.c_sharp, pitch.d_sharp),
+        pitch.e, True
     ),
 
-    'F#': PitchScales(
-        # maj scale includes E# which is absent from piano so we'll skip it
+    'Emin': Scale(
+        "Emin",
+        ScaleNotes(pitch.e, pitch.f_sharp, pitch.g, pitch.a, pitch.b, pitch.c, pitch.d),
+        pitch.e, False
+    ),
+
+    'Fmaj': Scale(
+        "Fmaj",
+        ScaleNotes(pitch.f, pitch.g, pitch.a, pitch.b_flat, pitch.c, pitch.d, pitch.e),
+        pitch.f, True
+    ),
+
+    'Fmin': Scale(
+        "Fmin",
+        ScaleNotes(pitch.f, pitch.g, pitch.a_flat, pitch.b_flat, pitch.c, pitch.d_flat, pitch.e_flat),
+        pitch.f, False
+    ),
+
+    'F#maj':
+        # F#maj scale includes E# which is absent from piano so we'll skip it
         None,
-        Scale(
-            "F#min",
-            (pitch.f_sharp, pitch.g_sharp, pitch.a, pitch.b, pitch.c_sharp, pitch.d, pitch.e),
-            pitch.f_sharp, False
-        )
+
+    'F#min': Scale(
+        "F#min",
+        ScaleNotes(pitch.f_sharp, pitch.g_sharp, pitch.a, pitch.b, pitch.c_sharp, pitch.d, pitch.e),
+        pitch.f_sharp, False
     ),
 
-    'Gb': PitchScales(
-        # maj scale includes Cb which is absent from piano so we'll skip it
+    'Gbmaj':
+        # Gbmaj scale includes Cb which is absent from piano so we'll skip it
         None,
+
+    'Gbmin':
         # Gbmin is theoretical so we'll skip it
-        None
-    ),
-
-    'G': PitchScales(
-        Scale(
-            "Gmaj",
-            (pitch.g, pitch.a, pitch.b, pitch.c, pitch.d, pitch.e, pitch.f_sharp),
-            pitch.g, True
-        ),
-        Scale(
-            "Gmin",
-            (pitch.g, pitch.a, pitch.b_flat, pitch.c, pitch.d, pitch.e_flat, pitch.f),
-            pitch.g, False
-        )
-    ),
-
-    'G#': PitchScales(
-        # maj scale includes E# which is absent from piano so we'll skip it
         None,
-        Scale(
-            "G#min",
-            (pitch.g_sharp, pitch.a_sharp, pitch.b, pitch.c_sharp, pitch.d_sharp, pitch.e, pitch.g),
-            pitch.g_sharp, False
-        )
+
+    'Gmaj': Scale(
+        "Gmaj",
+        ScaleNotes(pitch.g, pitch.a, pitch.b, pitch.c, pitch.d, pitch.e, pitch.f_sharp),
+        pitch.g, True
     ),
 
-    'Ab': PitchScales(
-        Scale(
-            "Abmaj",
-            (pitch.a_flat, pitch.b_flat, pitch.c, pitch.d_flat, pitch.e_flat, pitch.f, pitch.g),
-            pitch.a_flat, True
-        ),
-        # min scale includes Fb which is absent from piano so we'll skip it
-        None
+    'Gmin': Scale(
+        "Gmin",
+        ScaleNotes(pitch.g, pitch.a, pitch.b_flat, pitch.c, pitch.d, pitch.e_flat, pitch.f),
+        pitch.g, False
     ),
 
-    'A': PitchScales(
-        Scale(
-            "Amaj",
-            (pitch.a, pitch.b, pitch.c_sharp, pitch.d, pitch.e, pitch.f_sharp, pitch.g_sharp),
-            pitch.a, True
-        ),
-        Scale(
-            "Amin",
-            (pitch.a, pitch.b, pitch.c, pitch.d, pitch.e, pitch.f, pitch.g),
-            pitch.a, False
-        )
+    'G#maj':
+        # G#maj scale includes E# which is absent from piano so we'll skip it
+        None,
+
+    'G#min': Scale(
+        "G#min",
+        ScaleNotes(pitch.g_sharp, pitch.a_sharp, pitch.b, pitch.c_sharp, pitch.d_sharp, pitch.e, pitch.f_sharp),
+        pitch.g_sharp, False
     ),
 
-    'A#': PitchScales(
+    'Abmaj': Scale(
+        "Abmaj",
+        ScaleNotes(pitch.a_flat, pitch.b_flat, pitch.c, pitch.d_flat, pitch.e_flat, pitch.f, pitch.g),
+        pitch.a_flat, True
+    ),
+
+    'Abmin': Scale(
+        # Abmin scale uses B in place of Cb and E in place of Fb (on piano)
+        'Abmin',
+        ScaleNotes(pitch.a_flat, pitch.b_flat, pitch.c_flat, pitch.d_flat, pitch.e_flat, pitch.f_flat, pitch.g_flat),
+        pitch.a_flat, False
+    ),
+
+    'Amaj': Scale(
+        "Amaj",
+        ScaleNotes(pitch.a, pitch.b, pitch.c_sharp, pitch.d, pitch.e, pitch.f_sharp, pitch.g_sharp),
+        pitch.a, True
+    ),
+
+    'Amin': Scale(
+        "Amin",
+        ScaleNotes(pitch.a, pitch.b, pitch.c, pitch.d, pitch.e, pitch.f, pitch.g),
+        pitch.a, False
+    ),
+
+    'A#maj':
         # A#maj is theoretical so we'll skip it
         None,
-        # min scale includes B# which is absent from piano so we'll skip it
-        None
+
+    'A#min':
+        # A#min scale includes B# which is absent from piano so we'll skip it
+        None,
+
+    'Bbmaj': Scale(
+        "Bbmaj",
+        ScaleNotes(pitch.b_flat, pitch.c, pitch.d, pitch.e_flat, pitch.f, pitch.g, pitch.a),
+        pitch.b_flat, True
     ),
 
-    'Bb': PitchScales(
-        Scale(
-            "Bbmaj",
-            (pitch.b_flat, pitch.c, pitch.d, pitch.e_flat, pitch.f, pitch.g, pitch.a),
-            pitch.b_flat, True
-        ),
-        Scale(
-            "Bbmin",
-            (pitch.b_flat, pitch.c, pitch.d_flat, pitch.e_flat, pitch.f, pitch.g_flat, pitch.a_flat),
-            pitch.b_flat, False
-        )
+    'Bbmin': Scale(
+        "Bbmin",
+        ScaleNotes(pitch.b_flat, pitch.c, pitch.d_flat, pitch.e_flat, pitch.f, pitch.g_flat, pitch.a_flat),
+        pitch.b_flat, False
     ),
 
-    'B': PitchScales(
-        Scale(
-            "Bmaj",
-            (pitch.b, pitch.c_sharp, pitch.d_sharp, pitch.e, pitch.f_sharp, pitch.g_sharp, pitch.a_sharp),
-            pitch.b, True
-        ),
-        Scale(
-            "Bmin",
-            (pitch.b, pitch.c_sharp, pitch.d, pitch.e, pitch.f_sharp, pitch.g, pitch.a),
-            pitch.b, False
-        )
+    'Bmaj': Scale(
+        "Bmaj",
+        ScaleNotes(pitch.b, pitch.c_sharp, pitch.d_sharp, pitch.e, pitch.f_sharp, pitch.g_sharp, pitch.a_sharp),
+        pitch.b, True
+    ),
+
+    'Bmin': Scale(
+        "Bmin",
+        ScaleNotes(pitch.b, pitch.c_sharp, pitch.d, pitch.e, pitch.f_sharp, pitch.g, pitch.a),
+        pitch.b, False
     )
 }
 
-major = { key: scales[key].maj for key in scales.keys() }
-minor = { key: scales[key].min for key in scales.keys() }
+# major = { key: scales[key].maj for key in scales.keys() }
+# minor = { key: scales[key].min for key in scales.keys() }
 
 # Ancient Greek modes
 

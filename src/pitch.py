@@ -1,4 +1,4 @@
-import json
+import jsonpickle
 
 class Pitch():
 
@@ -17,7 +17,7 @@ class Pitch():
     def __eq__(self, other):
         if isinstance(other, Pitch):
             return self._position == other._position
-        return false
+        return False
 
     def is_white(self):
         return self._position in white_positions
@@ -29,7 +29,7 @@ class Pitch():
         return self.name()
 
     def __repr__(self):
-        return json.dumps(dict(self), ensure_ascii=False)
+        return jsonpickle.encode(self)
 
 c = Pitch('C', 0)
 c_sharp = Pitch('C#', 1)
@@ -49,3 +49,28 @@ a_sharp = Pitch('A#', 10)
 b_flat = Pitch('Bb', 10)
 b = Pitch('B', 11)
 
+key_pitches = (
+    c, c_sharp, d_flat, d, d_sharp, e_flat, e, f, f_sharp, g_flat, g, g_sharp,
+    a_flat, a, a_sharp, b_flat, b
+)
+
+b_sharp = Pitch('B#', -1)
+c_flat = Pitch('Cb', -1)
+e_sharp = Pitch('E#', -1)
+f_flat = Pitch('Fb', -1)
+
+test = 1
+
+non_key_pitches = (
+    b_sharp, c_flat, e_sharp, f_flat
+)
+
+proxy = {
+    'B#': b,
+    'Cb': b,
+    'E#': e,
+    'Fb': e
+}
+
+# octave_sharp = (c, c_sharp, d, d_sharp, e, f, f_sharp, g, g_sharp, a, a_sharp, b)
+# octave_flat = (c, d_flat, d, e_flat, e, f, g_flat, g, a_flat, a, b_flat, b)

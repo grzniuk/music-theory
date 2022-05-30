@@ -12,4 +12,5 @@ class TestScale():
         assert obj.name() == 'test'
 
     def test_scale_constants(self):
-        assert scale.scales['C'].maj.name() == 'Cmaj'
+        assert scale.scales['Cmin'].name() == 'Cmin'
+        assert scale.scales['Cmin'].is_minor()
