@@ -1,4 +1,4 @@
-import src.pitch as pitch
+import pitch as pitch
 
 class Note():
 

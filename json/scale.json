@@ -1,0 +1,894 @@
+{
+    "Cmaj": {
+        "_name": "Cmaj",
+        "_pitches": [
+            {
+                "_name": "C",
+                "_position": 0
+            },
+            {
+                "_name": "D",
+                "_position": 2
+            },
+            {
+                "_name": "E",
+                "_position": 4
+            },
+            {
+                "_name": "F",
+                "_position": 5
+            },
+            {
+                "_name": "G",
+                "_position": 7
+            },
+            {
+                "_name": "A",
+                "_position": 9
+            },
+            {
+                "_name": "B",
+                "_position": 11
+            }
+        ],
+        "_major": true
+    },
+    "Cmin": {
+        "_name": "Cmin",
+        "_pitches": [
+            {
+                "_name": "C",
+                "_position": 0
+            },
+            {
+                "_name": "D",
+                "_position": 2
+            },
+            {
+                "_name": "Eb",
+                "_position": 3
+            },
+            {
+                "_name": "F",
+                "_position": 5
+            },
+            {
+                "_name": "G",
+                "_position": 7
+            },
+            {
+                "_name": "Ab",
+                "_position": 8
+            },
+            {
+                "_name": "Bb",
+                "_position": 10
+            }
+        ],
+        "_major": false
+    },
+    "C#maj": {
+        "_name": "C#maj",
+        "_pitches": [
+            {
+                "_name": "C#",
+                "_position": 1
+            },
+            {
+                "_name": "D#",
+                "_position": 3
+            },
+            {
+                "_name": "E#",
+                "_position": -1
+            },
+            {
+                "_name": "F#",
+                "_position": 6
+            },
+            {
+                "_name": "G#",
+                "_position": 8
+            },
+            {
+                "_name": "A#",
+                "_position": 10
+            },
+            {
+                "_name": "B#",
+                "_position": -1
+            }
+        ],
+        "_major": true
+    },
+    "C#min": {
+        "_name": "C#min",
+        "_pitches": [
+            {
+                "_name": "C#",
+                "_position": 1
+            },
+            {
+                "_name": "D#",
+                "_position": 3
+            },
+            {
+                "_name": "E",
+                "_position": 4
+            },
+            {
+                "_name": "F#",
+                "_position": 6
+            },
+            {
+                "_name": "G#",
+                "_position": 8
+            },
+            {
+                "_name": "A",
+                "_position": 9
+            },
+            {
+                "_name": "B",
+                "_position": 11
+            }
+        ],
+        "_major": false
+    },
+    "Dbmaj": {
+        "_name": "Dbmaj",
+        "_pitches": [
+            {
+                "_name": "Db",
+                "_position": 1
+            },
+            {
+                "_name": "Eb",
+                "_position": 3
+            },
+            {
+                "_name": "F",
+                "_position": 5
+            },
+            {
+                "_name": "Gb",
+                "_position": 6
+            },
+            {
+                "_name": "Ab",
+                "_position": 8
+            },
+            {
+                "_name": "Bb",
+                "_position": 10
+            },
+            {
+                "_name": "C",
+                "_position": 0
+            }
+        ],
+        "_major": true
+    },
+    "Dbmin": null,
+    "Dmaj": {
+        "_name": "Dmaj",
+        "_pitches": [
+            {
+                "_name": "D",
+                "_position": 2
+            },
+            {
+                "_name": "E",
+                "_position": 4
+            },
+            {
+                "_name": "F#",
+                "_position": 6
+            },
+            {
+                "_name": "G",
+                "_position": 7
+            },
+            {
+                "_name": "A",
+                "_position": 9
+            },
+            {
+                "_name": "B",
+                "_position": 11
+            },
+            {
+                "_name": "C#",
+                "_position": 1
+            }
+        ],
+        "_major": true
+    },
+    "Dmin": {
+        "_name": "Dmin",
+        "_pitches": [
+            {
+                "_name": "D",
+                "_position": 2
+            },
+            {
+                "_name": "E",
+                "_position": 4
+            },
+            {
+                "_name": "F",
+                "_position": 5
+            },
+            {
+                "_name": "G",
+                "_position": 7
+            },
+            {
+                "_name": "A",
+                "_position": 9
+            },
+            {
+                "_name": "Bb",
+                "_position": 10
+            },
+            {
+                "_name": "C",
+                "_position": 0
+            }
+        ],
+        "_major": false
+    },
+    "D#maj": null,
+    "D#min": {
+        "_name": "D#min",
+        "_pitches": [
+            {
+                "_name": "D#",
+                "_position": 3
+            },
+            {
+                "_name": "E#",
+                "_position": -1
+            },
+            {
+                "_name": "F#",
+                "_position": 6
+            },
+            {
+                "_name": "G#",
+                "_position": 8
+            },
+            {
+                "_name": "A#",
+                "_position": 10
+            },
+            {
+                "_name": "B",
+                "_position": 11
+            },
+            {
+                "_name": "C#",
+                "_position": 1
+            }
+        ],
+        "_major": false
+    },
+    "Ebmaj": {
+        "_name": "Ebmaj",
+        "_pitches": [
+            {
+                "_name": "Eb",
+                "_position": 3
+            },
+            {
+                "_name": "F",
+                "_position": 5
+            },
+            {
+                "_name": "G",
+                "_position": 7
+            },
+            {
+                "_name": "Ab",
+                "_position": 8
+            },
+            {
+                "_name": "Bb",
+                "_position": 10
+            },
+            {
+                "_name": "C",
+                "_position": 0
+            },
+            {
+                "_name": "D",
+                "_position": 2
+            }
+        ],
+        "_major": true
+    },
+    "Ebmin": {
+        "_name": "Ebmin",
+        "_pitches": [
+            {
+                "_name": "Eb",
+                "_position": 3
+            },
+            {
+                "_name": "F",
+                "_position": 5
+            },
+            {
+                "_name": "Gb",
+                "_position": 6
+            },
+            {
+                "_name": "Ab",
+                "_position": 8
+            },
+            {
+                "_name": "Bb",
+                "_position": 10
+            },
+            {
+                "_name": "Cb",
+                "_position": -1
+            },
+            {
+                "_name": "Db",
+                "_position": 1
+            }
+        ],
+        "_major": false
+    },
+    "Emaj": {
+        "_name": "Emaj",
+        "_pitches": [
+            {
+                "_name": "E",
+                "_position": 4
+            },
+            {
+                "_name": "F#",
+                "_position": 6
+            },
+            {
+                "_name": "G#",
+                "_position": 8
+            },
+            {
+                "_name": "A",
+                "_position": 9
+            },
+            {
+                "_name": "B",
+                "_position": 11
+            },
+            {
+                "_name": "C#",
+                "_position": 1
+            },
+            {
+                "_name": "D#",
+                "_position": 3
+            }
+        ],
+        "_major": true
+    },
+    "Emin": {
+        "_name": "Emin",
+        "_pitches": [
+            {
+                "_name": "E",
+                "_position": 4
+            },
+            {
+                "_name": "F#",
+                "_position": 6
+            },
+            {
+                "_name": "G",
+                "_position": 7
+            },
+            {
+                "_name": "A",
+                "_position": 9
+            },
+            {
+                "_name": "B",
+                "_position": 11
+            },
+            {
+                "_name": "C",
+                "_position": 0
+            },
+            {
+                "_name": "D",
+                "_position": 2
+            }
+        ],
+        "_major": false
+    },
+    "Fmaj": {
+        "_name": "Fmaj",
+        "_pitches": [
+            {
+                "_name": "F",
+                "_position": 5
+            },
+            {
+                "_name": "G",
+                "_position": 7
+            },
+            {
+                "_name": "A",
+                "_position": 9
+            },
+            {
+                "_name": "Bb",
+                "_position": 10
+            },
+            {
+                "_name": "C",
+                "_position": 0
+            },
+            {
+                "_name": "D",
+                "_position": 2
+            },
+            {
+                "_name": "E",
+                "_position": 4
+            }
+        ],
+        "_major": true
+    },
+    "Fmin": {
+        "_name": "Fmin",
+        "_pitches": [
+            {
+                "_name": "F",
+                "_position": 5
+            },
+            {
+                "_name": "G",
+                "_position": 7
+            },
+            {
+                "_name": "Ab",
+                "_position": 8
+            },
+            {
+                "_name": "Bb",
+                "_position": 10
+            },
+            {
+                "_name": "C",
+                "_position": 0
+            },
+            {
+                "_name": "Db",
+                "_position": 1
+            },
+            {
+                "_name": "Eb",
+                "_position": 3
+            }
+        ],
+        "_major": false
+    },
+    "F#maj": null,
+    "F#min": {
+        "_name": "F#min",
+        "_pitches": [
+            {
+                "_name": "F#",
+                "_position": 6
+            },
+            {
+                "_name": "G#",
+                "_position": 8
+            },
+            {
+                "_name": "A",
+                "_position": 9
+            },
+            {
+                "_name": "B",
+                "_position": 11
+            },
+            {
+                "_name": "C#",
+                "_position": 1
+            },
+            {
+                "_name": "D",
+                "_position": 2
+            },
+            {
+                "_name": "E",
+                "_position": 4
+            }
+        ],
+        "_major": false
+    },
+    "Gbmaj": null,
+    "Gbmin": null,
+    "Gmaj": {
+        "_name": "Gmaj",
+        "_pitches": [
+            {
+                "_name": "G",
+                "_position": 7
+            },
+            {
+                "_name": "A",
+                "_position": 9
+            },
+            {
+                "_name": "B",
+                "_position": 11
+            },
+            {
+                "_name": "C",
+                "_position": 0
+            },
+            {
+                "_name": "D",
+                "_position": 2
+            },
+            {
+                "_name": "E",
+                "_position": 4
+            },
+            {
+                "_name": "F#",
+                "_position": 6
+            }
+        ],
+        "_major": true
+    },
+    "Gmin": {
+        "_name": "Gmin",
+        "_pitches": [
+            {
+                "_name": "G",
+                "_position": 7
+            },
+            {
+                "_name": "A",
+                "_position": 9
+            },
+            {
+                "_name": "Bb",
+                "_position": 10
+            },
+            {
+                "_name": "C",
+                "_position": 0
+            },
+            {
+                "_name": "D",
+                "_position": 2
+            },
+            {
+                "_name": "Eb",
+                "_position": 3
+            },
+            {
+                "_name": "F",
+                "_position": 5
+            }
+        ],
+        "_major": false
+    },
+    "G#maj": null,
+    "G#min": {
+        "_name": "G#min",
+        "_pitches": [
+            {
+                "_name": "G#",
+                "_position": 8
+            },
+            {
+                "_name": "A#",
+                "_position": 10
+            },
+            {
+                "_name": "B",
+                "_position": 11
+            },
+            {
+                "_name": "C#",
+                "_position": 1
+            },
+            {
+                "_name": "D#",
+                "_position": 3
+            },
+            {
+                "_name": "E",
+                "_position": 4
+            },
+            {
+                "_name": "F#",
+                "_position": 6
+            }
+        ],
+        "_major": false
+    },
+    "Abmaj": {
+        "_name": "Abmaj",
+        "_pitches": [
+            {
+                "_name": "Ab",
+                "_position": 8
+            },
+            {
+                "_name": "Bb",
+                "_position": 10
+            },
+            {
+                "_name": "C",
+                "_position": 0
+            },
+            {
+                "_name": "Db",
+                "_position": 1
+            },
+            {
+                "_name": "Eb",
+                "_position": 3
+            },
+            {
+                "_name": "F",
+                "_position": 5
+            },
+            {
+                "_name": "G",
+                "_position": 7
+            }
+        ],
+        "_major": true
+    },
+    "Abmin": {
+        "_name": "Abmin",
+        "_pitches": [
+            {
+                "_name": "Ab",
+                "_position": 8
+            },
+            {
+                "_name": "Bb",
+                "_position": 10
+            },
+            {
+                "_name": "Cb",
+                "_position": -1
+            },
+            {
+                "_name": "Db",
+                "_position": 1
+            },
+            {
+                "_name": "Eb",
+                "_position": 3
+            },
+            {
+                "_name": "Fb",
+                "_position": -1
+            },
+            {
+                "_name": "Gb",
+                "_position": 6
+            }
+        ],
+        "_major": false
+    },
+    "Amaj": {
+        "_name": "Amaj",
+        "_pitches": [
+            {
+                "_name": "A",
+                "_position": 9
+            },
+            {
+                "_name": "B",
+                "_position": 11
+            },
+            {
+                "_name": "C#",
+                "_position": 1
+            },
+            {
+                "_name": "D",
+                "_position": 2
+            },
+            {
+                "_name": "E",
+                "_position": 4
+            },
+            {
+                "_name": "F#",
+                "_position": 6
+            },
+            {
+                "_name": "G#",
+                "_position": 8
+            }
+        ],
+        "_major": true
+    },
+    "Amin": {
+        "_name": "Amin",
+        "_pitches": [
+            {
+                "_name": "A",
+                "_position": 9
+            },
+            {
+                "_name": "B",
+                "_position": 11
+            },
+            {
+                "_name": "C",
+                "_position": 0
+            },
+            {
+                "_name": "D",
+                "_position": 2
+            },
+            {
+                "_name": "E",
+                "_position": 4
+            },
+            {
+                "_name": "F",
+                "_position": 5
+            },
+            {
+                "_name": "G",
+                "_position": 7
+            }
+        ],
+        "_major": false
+    },
+    "A#maj": null,
+    "A#min": null,
+    "Bbmaj": {
+        "_name": "Bbmaj",
+        "_pitches": [
+            {
+                "_name": "Bb",
+                "_position": 10
+            },
+            {
+                "_name": "C",
+                "_position": 0
+            },
+            {
+                "_name": "D",
+                "_position": 2
+            },
+            {
+                "_name": "Eb",
+                "_position": 3
+            },
+            {
+                "_name": "F",
+                "_position": 5
+            },
+            {
+                "_name": "G",
+                "_position": 7
+            },
+            {
+                "_name": "A",
+                "_position": 9
+            }
+        ],
+        "_major": true
+    },
+    "Bbmin": {
+        "_name": "Bbmin",
+        "_pitches": [
+            {
+                "_name": "Bb",
+                "_position": 10
+            },
+            {
+                "_name": "C",
+                "_position": 0
+            },
+            {
+                "_name": "Db",
+                "_position": 1
+            },
+            {
+                "_name": "Eb",
+                "_position": 3
+            },
+            {
+                "_name": "F",
+                "_position": 5
+            },
+            {
+                "_name": "Gb",
+                "_position": 6
+            },
+            {
+                "_name": "Ab",
+                "_position": 8
+            }
+        ],
+        "_major": false
+    },
+    "Bmaj": {
+        "_name": "Bmaj",
+        "_pitches": [
+            {
+                "_name": "B",
+                "_position": 11
+            },
+            {
+                "_name": "C#",
+                "_position": 1
+            },
+            {
+                "_name": "D#",
+                "_position": 3
+            },
+            {
+                "_name": "E",
+                "_position": 4
+            },
+            {
+                "_name": "F#",
+                "_position": 6
+            },
+            {
+                "_name": "G#",
+                "_position": 8
+            },
+            {
+                "_name": "A#",
+                "_position": 10
+            }
+        ],
+        "_major": true
+    },
+    "Bmin": {
+        "_name": "Bmin",
+        "_pitches": [
+            {
+                "_name": "B",
+                "_position": 11
+            },
+            {
+                "_name": "C#",
+                "_position": 1
+            },
+            {
+                "_name": "D",
+                "_position": 2
+            },
+            {
+                "_name": "E",
+                "_position": 4
+            },
+            {
+                "_name": "F#",
+                "_position": 6
+            },
+            {
+                "_name": "G",
+                "_position": 7
+            },
+            {
+                "_name": "A",
+                "_position": 9
+            }
+        ],
+        "_major": false
+    }
+}

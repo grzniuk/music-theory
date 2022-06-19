@@ -8,9 +8,11 @@ class Pitch():
         self._name = name
         self._position = position
 
+    @property
     def name(self):
         return self._name
 
+    @property
     def position(self):
         return self._position
 
@@ -26,7 +28,7 @@ class Pitch():
         return self._position not in white_positions
 
     def __str__(self):
-        return self.name()
+        return self.name
 
     def __repr__(self):
         return jsonpickle.encode(self)
@@ -49,6 +51,7 @@ a_sharp = Pitch('A#', 10)
 b_flat = Pitch('Bb', 10)
 b = Pitch('B', 11)
 
+# tuple of pitches found on a piano
 key_pitches = (
     c, c_sharp, d_flat, d, d_sharp, e_flat, e, f, f_sharp, g_flat, g, g_sharp,
     a_flat, a, a_sharp, b_flat, b
@@ -59,8 +62,7 @@ c_flat = Pitch('Cb', -1)
 e_sharp = Pitch('E#', -1)
 f_flat = Pitch('Fb', -1)
 
-test = 1
-
+# tuple of pitches not found on a piano
 non_key_pitches = (
     b_sharp, c_flat, e_sharp, f_flat
 )

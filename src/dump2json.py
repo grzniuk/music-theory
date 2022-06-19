@@ -1,6 +1,8 @@
 import pitch as p
 #import note as n
-#import scale as s
+import scale as s
+import chord as c
+import key as k
 
 from json import dump, JSONEncoder
 
@@ -31,3 +33,20 @@ pitch = {
 filename = 'json/pitch.json'
 with open(filename, 'w', encoding='utf8') as json_file:
     dump(pitch, json_file, indent=4, cls=MyEncoder)
+
+scales = s.scales
+filename = 'json/scale.json'
+with open(filename, 'w', encoding='utf8') as json_file:
+    dump(scales, json_file, indent=4, cls=MyEncoder)
+
+chords = {}
+chords['triads'] = c.triads
+filename = 'json/chords.json'
+with open(filename, 'w', encoding='utf8') as json_file:
+    dump(chords, json_file, indent=4, cls=MyEncoder)
+
+keys = {}
+keys['triads'] = k.triads
+filename = 'json/keys.json'
+with open(filename, 'w', encoding='utf8') as json_file:
+    dump(keys, json_file, indent=4, cls=MyEncoder)
